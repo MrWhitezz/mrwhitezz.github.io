@@ -88,21 +88,54 @@ dns:
       - 0.0.0.0/32
 
 proxies:
-  - {"name": "San Jose, US, DMIT",
-    "type":"vmess",
-    "server":"65.75.192.60",
-    "port":12174,
-    "cipher":"auto",
-    "uuid":"531de8ab-f17c-4a11-b9bd-0ef10c6dd54d",
-    "alterId":0,
-    "tls":false,
-    "skip-cert-verify":true,
-    "network":"tcp"}
+  - name: "Hong Kong, HK, StarryDNS"
+    type: ss
+    server: 122.128.99.57
+    port: 50458
+    cipher: chacha20-ietf-poly1305
+    password: "48McvoL94Klk"
+    plugin: obfs
+    plugin-opts:
+      mode: tls
+      host: cloudfront.net
+  
+  - name: "Tampa, US, Hostodo"
+    type: ss
+    server: 66.187.6.29
+    port: 50257
+    cipher: chacha20-ietf-poly1305
+    password: "14S1k712JNKK"
+    plugin: obfs
+    plugin-opts:
+      mode: tls
+      host: cloudflare.com
+  
+  - name: "New York, US, Spectrum"
+    type: ss
+    server: 74.71.229.110
+    port: 8964
+    cipher: chacha20-ietf-poly1305
+    password: "Ub4w20E+8q1w8Io3"
+
+  - name: "San Jose, US, DMIT"
+    type: vmess
+    server: "65.75.192.60"
+    port: 12174
+    cipher: auto
+    uuid: "531de8ab-f17c-4a11-b9bd-0ef10c6dd54d"
+    alterId: 0
+    tls: false
+    skip-cert-verify: true
+    network: "tcp"
+
 proxy-groups:
   - name: Proxy
     type: select
     proxies:
       - "San Jose, US, DMIT"
+      - "Hong Kong, HK, StarryDNS"
+      - "Tampa, US, Hostodo"
+      - "New York, US, Spectrum"
   
 rules:
 
